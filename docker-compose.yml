@@ -23,5 +23,9 @@ services:
       DIFFICULTY: "normal"
       MAX_PLAYERS: "20"
       TZ: "Etc/UTC"
+      # Mods from Modrinth, listed in ./mods.txt and downloaded/updated on start
+      MODRINTH_PROJECTS: "@/extras/mods.txt"
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
     volumes:
       - ./data:/data
+      - ./mods.txt:/extras/mods.txt:ro

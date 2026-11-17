@@ -1,0 +1,19 @@
+# Modrinth mods to install on server start (one per line).
+# Copy this file to mods.txt and edit it: cp mods.txt.example mods.txt
+# Use the project slug from the URL, e.g. https://modrinth.com/mod/fabric-api -> fabric-api
+#
+# Formats:
+#   slug              latest release for this MC version + loader
+#   slug:1.2.3        a specific version number (or version ID)
+#   slug:beta         latest beta-or-better
+#   slug?             optional: warn and continue if no 26.3 build exists
+#   datapack:slug     a datapack instead of a mod
+#
+# Removing a line removes that mod from the server on the next restart.
+# Required dependencies are downloaded automatically.
+# Only list server-side mods; client-only mods (shaders, minimaps, HUDs) can crash the server.
+
+fabric-api
+lithium
+ferrite-core
+krypton
