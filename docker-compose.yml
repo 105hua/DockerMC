@@ -1,6 +1,12 @@
 services:
   minecraft:
-    image: itzg/minecraft-server:java25 # Minecraft 26.3 requires Java 25
+    # itzg/minecraft-server rebuilt on Amazon Corretto 25 (Minecraft 26.3 requires Java 25).
+    # The alpine variant is used because itzg's build scripts support alpine, not Amazon Linux.
+    build:
+      context: https://github.com/itzg/docker-minecraft-server.git#2026.11.0
+      args:
+        BASE_IMAGE: amazoncorretto:25-alpine
+    image: minecraft-server:corretto25
     container_name: minecraft
     restart: unless-stopped
     tty: true
