@@ -23,6 +23,15 @@ services:
       DIFFICULTY: "normal"
       MAX_PLAYERS: "20"
       TZ: "Etc/UTC"
+      # Whitelist: only listed players can join. Java Edition usernames (or UUIDs), one per line.
+      # SYNCHRONIZE makes this list the source of truth: removed names are un-whitelisted on
+      # restart, and in-game /whitelist add changes are overwritten.
+      ENABLE_WHITELIST: "true"
+      ENFORCE_WHITELIST: "true" # kick online players who are removed from the whitelist
+      EXISTING_WHITELIST_FILE: "SYNCHRONIZE"
+      # WHITELIST: |
+      #   PlayerOne
+      #   PlayerTwo
       # Mods from Modrinth, listed in ./mods.txt and downloaded/updated on start
       MODRINTH_PROJECTS: "@/extras/mods.txt"
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
