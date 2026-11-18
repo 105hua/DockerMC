@@ -25,10 +25,37 @@ The server listens on port `25565`. World, config and mod files are kept in `./d
 | Task | Command |
 |------|---------|
 | Follow logs | `docker compose logs -f minecraft` |
-| Run a console command | `docker compose exec minecraft rcon-cli <command>` |
+| Run one console command | `docker compose exec minecraft rcon-cli <command>` |
+| Open an interactive console | `docker compose exec minecraft rcon-cli` |
 | Apply changes to `mods.txt` | `docker compose restart minecraft` |
 | Apply changes to `docker-compose.yml` | `docker compose up -d` |
 | Stop the server | `docker compose down` |
+
+## Console
+
+There are two ways to run server commands. Commands don't take a leading `/`.
+
+**RCON (recommended).** Run a single command:
+
+```sh
+docker compose exec minecraft rcon-cli whitelist add PlayerOne
+```
+
+Or omit the command for an interactive prompt (exit with `Ctrl+D`):
+
+```sh
+docker compose exec minecraft rcon-cli
+```
+
+RCON is enabled inside the container with a randomly generated password, and its port (25575) is not published, so it can't be reached from outside the host.
+
+**Attach to the server process.** This shows the live log and accepts typed commands:
+
+```sh
+docker attach minecraft
+```
+
+Detach with `Ctrl+P` then `Ctrl+Q`. `Ctrl+C` stops the server instead.
 
 ## Mods
 
